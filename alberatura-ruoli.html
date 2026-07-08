@@ -1,0 +1,406 @@
+<title>Alberatura · shop.stappando.it</title>
+<style>
+  :root{
+    --bg:#faf7f3; --panel:#ffffff; --panel-2:#f4efe8;
+    --ink:#2a2320; --ink-soft:#6b6058; --hair:#e7ded3; --hair-strong:#d8ccbd;
+    --wine:#7e1d32; --brass:#a8763e;
+    /* role hues */
+    --r-guest:#8a8177; --r-user:#3a6ea5; --r-horeca:#2e7d6b;
+    --r-vmgr:#b0803a; --r-vown:#9a5327; --r-admin:#8f1f38; --r-madmin:#6b3b74;
+    --shadow:0 1px 2px rgba(42,35,32,.05), 0 8px 28px -18px rgba(42,35,32,.35);
+    --maxw:1080px;
+    --f-ui:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#17130f; --panel:#211b16; --panel-2:#1a1511;
+      --ink:#efe6da; --ink-soft:#a89a8b; --hair:#332a22; --hair-strong:#403428;
+      --wine:#e07a8c; --brass:#d8a765;
+      --r-guest:#b0a595; --r-user:#7aa8d8; --r-horeca:#5fb9a3;
+      --r-vmgr:#d8ab63; --r-vown:#d68a55; --r-admin:#e8829a; --r-madmin:#b787c0;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 34px -20px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#17130f; --panel:#211b16; --panel-2:#1a1511;
+    --ink:#efe6da; --ink-soft:#a89a8b; --hair:#332a22; --hair-strong:#403428;
+    --wine:#e07a8c; --brass:#d8a765;
+    --r-guest:#b0a595; --r-user:#7aa8d8; --r-horeca:#5fb9a3;
+    --r-vmgr:#d8ab63; --r-vown:#d68a55; --r-admin:#e8829a; --r-madmin:#b787c0;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 34px -20px rgba(0,0,0,.7);
+  }
+  :root[data-theme="light"]{
+    --bg:#faf7f3; --panel:#ffffff; --panel-2:#f4efe8;
+    --ink:#2a2320; --ink-soft:#6b6058; --hair:#e7ded3; --hair-strong:#d8ccbd;
+    --wine:#7e1d32; --brass:#a8763e;
+    --r-guest:#8a8177; --r-user:#3a6ea5; --r-horeca:#2e7d6b;
+    --r-vmgr:#b0803a; --r-vown:#9a5327; --r-admin:#8f1f38; --r-madmin:#6b3b74;
+    --shadow:0 1px 2px rgba(42,35,32,.05), 0 8px 28px -18px rgba(42,35,32,.35);
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--f-ui);line-height:1.5;
+    -webkit-font-smoothing:antialiased;letter-spacing:.005em}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:clamp(20px,4vw,52px) clamp(16px,4vw,32px)}
+
+  /* ---------- header ---------- */
+  header.masthead{border-bottom:1px solid var(--hair);padding-bottom:26px;margin-bottom:30px}
+  .kicker{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--brass);font-weight:600;margin-bottom:14px}
+  .kicker::before{content:"";width:22px;height:1px;background:var(--brass)}
+  h1{font-size:clamp(30px,5.2vw,52px);line-height:1.03;margin:0 0 12px;font-weight:800;
+    letter-spacing:-.02em;text-wrap:balance}
+  h1 .dom{color:var(--wine)}
+  .lede{max-width:60ch;color:var(--ink-soft);font-size:clamp(15px,1.6vw,17px);margin:0}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:20px;font-size:12.5px;color:var(--ink-soft)}
+  .meta b{color:var(--ink);font-weight:600}
+  .meta span{display:inline-flex;gap:7px;align-items:center}
+
+  /* ---------- roles legend ---------- */
+  .legend{background:var(--panel);border:1px solid var(--hair);border-radius:14px;
+    padding:20px 22px;box-shadow:var(--shadow);margin-bottom:34px}
+  .legend h2{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-soft);
+    margin:0 0 14px;font-weight:700}
+  .roles{display:flex;flex-wrap:wrap;gap:9px}
+  .badge{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;
+    padding:5px 11px 5px 9px;border-radius:999px;line-height:1;white-space:nowrap;
+    color:var(--h);background:color-mix(in srgb,var(--h) 13%,transparent);
+    border:1px solid color-mix(in srgb,var(--h) 34%,transparent)}
+  .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--h);flex:none}
+  .badge small{color:var(--ink-soft);font-weight:500}
+  .g-guest{--h:var(--r-guest)} .g-user{--h:var(--r-user)} .g-horeca{--h:var(--r-horeca)}
+  .g-vmgr{--h:var(--r-vmgr)} .g-vown{--h:var(--r-vown)} .g-admin{--h:var(--r-admin)}
+  .g-madmin{--h:var(--r-madmin)}
+  .legend .note{margin:15px 0 0;font-size:12.5px;color:var(--ink-soft);
+    border-top:1px dashed var(--hair-strong);padding-top:13px}
+  .legend .note b{color:var(--ink)}
+
+  /* ---------- mega menu strip ---------- */
+  .megawrap{margin-bottom:36px}
+  .sec-eyebrow{display:flex;align-items:baseline;gap:12px;margin:0 0 14px}
+  .sec-eyebrow .num{font-size:12px;font-weight:700;color:var(--brass);letter-spacing:.1em;
+    font-variant-numeric:tabular-nums}
+  .sec-eyebrow h2{font-size:18px;margin:0;font-weight:700;letter-spacing:-.01em}
+  .sec-eyebrow p{margin:0;color:var(--ink-soft);font-size:13px}
+  .menu{display:flex;flex-wrap:wrap;gap:8px}
+  .menu .item{font-size:13.5px;font-weight:600;padding:8px 13px;border-radius:9px;
+    background:var(--panel);border:1px solid var(--hair)}
+  .menu .item.lead{background:color-mix(in srgb,var(--wine) 12%,var(--panel));
+    border-color:color-mix(in srgb,var(--wine) 30%,transparent);color:var(--wine)}
+  .menu .tag{font-size:12px;font-weight:600;padding:6px 11px;border-radius:999px;
+    background:color-mix(in srgb,var(--brass) 12%,var(--panel));color:var(--brass);
+    border:1px solid color-mix(in srgb,var(--brass) 30%,transparent)}
+
+  /* ---------- area cards ---------- */
+  .grid{display:grid;grid-template-columns:1fr;gap:20px}
+  @media (min-width:760px){.grid.two{grid-template-columns:1fr 1fr}}
+  .card{background:var(--panel);border:1px solid var(--hair);border-radius:16px;
+    padding:22px 22px 24px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent,var(--brass))}
+  .card.pubblica{--accent:var(--r-guest)} .card.cliente{--accent:var(--r-user)}
+  .card.vendor{--accent:var(--r-vmgr)} .card.admin{--accent:var(--r-admin)}
+  .card > .head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
+    margin-bottom:4px;flex-wrap:wrap}
+  .card .idx{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.08em;
+    font-variant-numeric:tabular-nums;margin-bottom:3px}
+  .card h3{font-size:20px;margin:0 0 3px;font-weight:800;letter-spacing:-.01em}
+  .card .sub{color:var(--ink-soft);font-size:13px;margin:0}
+  .card .who{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+
+  /* ---------- tree ---------- */
+  ul.tree{list-style:none;margin:16px 0 0;padding:0}
+  ul.tree ul{list-style:none;margin:0;padding:0 0 0 18px;position:relative}
+  ul.tree ul::before{content:"";position:absolute;left:6px;top:2px;bottom:10px;width:1px;
+    background:var(--hair-strong)}
+  ul.tree li{position:relative;padding:3px 0}
+  ul.tree ul li::before{content:"";position:absolute;left:-12px;top:14px;width:11px;height:1px;
+    background:var(--hair-strong)}
+  .node{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .node > .lbl{font-size:14px;font-weight:600}
+  .node.l1 > .lbl{font-size:14.5px;font-weight:700}
+  .node .desc{font-size:12.5px;color:var(--ink-soft);font-weight:400}
+  .node .lock{font-size:10.5px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:6px;
+    background:color-mix(in srgb,var(--h,var(--r-guest)) 14%,transparent);color:var(--h,var(--r-guest));
+    border:1px solid color-mix(in srgb,var(--h,var(--r-guest)) 30%,transparent);white-space:nowrap}
+  .ext{font-size:10.5px;font-weight:700;color:var(--brass);border:1px solid color-mix(in srgb,var(--brass) 34%,transparent);
+    background:color-mix(in srgb,var(--brass) 12%,transparent);padding:2px 7px;border-radius:6px}
+  .u-guest{--h:var(--r-guest)} .u-user{--h:var(--r-user)} .u-horeca{--h:var(--r-horeca)}
+  .u-vmgr{--h:var(--r-vmgr)} .u-vown{--h:var(--r-vown)} .u-admin{--h:var(--r-admin)}
+  .u-madmin{--h:var(--r-madmin)}
+
+  /* ---------- open questions ---------- */
+  .questions{margin-top:36px;background:var(--panel-2);border:1px solid var(--hair);
+    border-radius:16px;padding:24px 24px 26px}
+  .questions h2{font-size:16px;margin:0 0 4px;font-weight:800}
+  .questions .sub{color:var(--ink-soft);font-size:13px;margin:0 0 16px}
+  .qlist{display:grid;gap:12px;grid-template-columns:1fr;counter-reset:q}
+  @media(min-width:720px){.qlist{grid-template-columns:1fr 1fr}}
+  .q{display:flex;gap:12px;background:var(--panel);border:1px solid var(--hair);
+    border-radius:11px;padding:13px 15px}
+  .q::before{counter-increment:q;content:"Q" counter(q);font-size:11px;font-weight:800;color:var(--wine);
+    background:color-mix(in srgb,var(--wine) 12%,transparent);border-radius:7px;padding:3px 7px;height:fit-content;
+    font-variant-numeric:tabular-nums;white-space:nowrap}
+  .q.q-ok{border-color:color-mix(in srgb,var(--r-horeca) 34%,var(--hair))}
+  .q.q-ok::before{counter-increment:none;content:"✓";color:var(--r-horeca);
+    background:color-mix(in srgb,var(--r-horeca) 13%,transparent)}
+  .q p{margin:0;font-size:13px}
+  .q b{font-weight:700}
+
+  footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--hair);
+    color:var(--ink-soft);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--wine);outline-offset:2px;border-radius:4px}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">Progetto Re-platform · Information Architecture</div>
+    <h1>Alberatura <span class="dom">shop.stappando.it</span></h1>
+    <p class="lede">Mappa delle pagine e della navigazione del nuovo e-commerce di vini e distillati.
+      Prima bozza pensata per essere discussa e corretta — struttura, aree per ruolo e menu — prima di passare ai mockup.</p>
+    <div class="meta">
+      <span><b>Stack</b> Next.js (full)</span>
+      <span><b>Verticale</b> Vini &amp; Distillati</span>
+      <span><b>Ruoli</b> 7 livelli</span>
+      <span><b>Versione</b> v0.2 · bozza</span>
+      <span><b>Data</b> 07.07.2026</span>
+    </div>
+  </header>
+
+  <!-- ROLES -->
+  <section class="legend" aria-label="Livelli utente">
+    <h2>I 7 livelli utente</h2>
+    <div class="roles">
+      <span class="badge g-guest"><span class="dot"></span>Guest <small>· visitatore</small></span>
+      <span class="badge g-user"><span class="dot"></span>User <small>· cliente B2C</small></span>
+      <span class="badge g-horeca"><span class="dot"></span>Horeca <small>· cliente B2B</small></span>
+      <span class="badge g-vmgr"><span class="dot"></span>Vendor Manager</span>
+      <span class="badge g-vown"><span class="dot"></span>Vendor Owner</span>
+      <span class="badge g-admin"><span class="dot"></span>Admin <small>· super/owner</small></span>
+      <span class="badge g-madmin"><span class="dot"></span>Manager Admin <small>· operatore</small></span>
+    </div>
+    <p class="note"><b>Modello di accesso a cascata:</b> ogni livello vede tutto ciò che vede quello sotto, più il proprio.
+      Un badge accanto a una voce indica il livello <b>minimo</b> richiesto. Le voci senza badge nell'Area Pubblica sono accessibili a tutti (incluso Guest).</p>
+  </section>
+
+  <!-- MEGA MENU -->
+  <section class="megawrap">
+    <div class="sec-eyebrow"><span class="num">MENU</span><h2>Navigazione principale (header)</h2></div>
+    <p class="sub" style="margin:-6px 0 14px;color:var(--ink-soft);font-size:13px">Il cuore è la vendita: il menu apre sul catalogo per tipologia, con scorciatoie a regione, cantine, promozioni e tag editoriali.</p>
+    <div class="menu">
+      <span class="item lead">Vini ▾</span>
+      <span class="item lead">Distillati ▾</span>
+      <span class="item">Cantine / Vendor</span>
+      <span class="item">Regioni</span>
+      <span class="item">Promozioni</span>
+      <span class="item">Blog</span>
+      <span class="item">🔎 Cerca</span>
+    </div>
+    <div class="menu" style="margin-top:9px">
+      <span class="tag">★ Best Seller</span>
+      <span class="tag">✦ Novità</span>
+      <span class="tag">↑ Più acquistati</span>
+      <span class="tag">♥ Suggeriti</span>
+    </div>
+    <p class="sub" style="margin:12px 0 0;color:var(--ink-soft);font-size:12.5px">Ricerca per: <b>nome · categoria · vendor · uvaggio</b> · regione · annata · prezzo · gradazione · formato · disponibilità.</p>
+  </section>
+
+  <!-- AREA 1 — PUBBLICA -->
+  <div class="grid">
+    <section class="card pubblica">
+      <div class="head">
+        <div>
+          <div class="idx">AREA 01</div>
+          <h3>Area Pubblica &amp; Store</h3>
+          <p class="sub">Front-end di vendita — accessibile a tutti</p>
+        </div>
+        <div class="who"><span class="badge g-guest"><span class="dot"></span>Guest+</span></div>
+      </div>
+      <ul class="tree">
+        <li><div class="node l1"><span class="lbl">Home</span><span class="desc">hero, tag editoriali, promo, cantine in evidenza</span></div></li>
+        <li><div class="node l1"><span class="lbl">Age gate 18+</span><span class="desc">verifica età al primo accesso</span></div></li>
+        <li><div class="node l1"><span class="lbl">Shop / Catalogo</span><span class="desc">griglia + filtri e ordinamento</span></div>
+          <ul>
+            <li><div class="node"><span class="lbl">Vini</span><span class="desc">Rossi · Bianchi · Rosati · Bollicine &amp; Spumanti · Champagne · Dolci &amp; Passiti</span></div></li>
+            <li><div class="node"><span class="lbl">Distillati</span><span class="desc">Whisky · Rum · Gin · Grappa · Cognac &amp; Brandy · Vodka · Tequila · Liquori &amp; Amari</span></div></li>
+            <li><div class="node"><span class="lbl">Per Regione</span><span class="desc">landing regione + prodotti</span></div></li>
+            <li><div class="node"><span class="lbl">Per Uvaggio / Vitigno</span><span class="desc">landing vitigno</span></div></li>
+            <li><div class="node"><span class="lbl">Per Cantina / Vendor</span><span class="desc">elenco produttori</span></div></li>
+            <li><div class="node"><span class="lbl">Promozioni / Offerte</span></div></li>
+            <li><div class="node"><span class="lbl">Collezioni tag</span><span class="desc">Best seller · Novità · Più acquistati · Suggeriti</span></div></li>
+          </ul>
+        </li>
+        <li><div class="node l1"><span class="lbl">Pagina Prodotto (PDP)</span><span class="desc">scheda tecnica, prezzo B2C/horeca, disponibilità, recensioni, correlati</span></div></li>
+        <li><div class="node l1"><span class="lbl">Profilo Cantina / Vendor</span><span class="desc">storia + catalogo del produttore</span></div></li>
+        <li><div class="node l1"><span class="lbl">Risultati Ricerca</span></div></li>
+        <li><div class="node l1"><span class="lbl">Blog</span>
+          </div>
+          <ul>
+            <li><div class="node"><span class="lbl">Articolo · Categorie · Autore</span></div></li>
+          </ul>
+        </li>
+        <li><div class="node l1"><span class="lbl">Carrello</span></div></li>
+        <li><div class="node l1"><span class="lbl">Checkout</span><span class="desc">indirizzi · corriere · pagamento · codice sconto · riepilogo</span></div>
+          <ul>
+            <li><div class="node"><span class="lbl">Scelta corriere</span><span class="desc">BRT · TNT · Poste (per questo ordine)</span></div></li>
+            <li><div class="node"><span class="lbl">Conferma ordine</span></div></li>
+          </ul>
+        </li>
+        <li><div class="node l1"><span class="lbl">Account</span><span class="desc">Login · Registrazione · Recupero password · Verifica email</span></div></li>
+        <li><div class="node l1"><span class="lbl">Newsletter</span> <span class="ext">↗ ESTERNO Mailchimp</span></div></li>
+        <li><div class="node l1"><span class="lbl">Pagine istituzionali</span></div>
+          <ul>
+            <li><div class="node"><span class="lbl">Chi siamo · Contatti · Come funziona</span></div></li>
+            <li><div class="node"><span class="lbl">Spedizioni &amp; Corrieri · Resi &amp; Rimborsi · FAQ</span></div></li>
+            <li><div class="node"><span class="lbl">Vendi su Stappando</span><span class="desc">diventa vendor</span></div></li>
+            <li><div class="node"><span class="lbl">Termini · Privacy · Cookie · Bevi responsabile</span></div></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- AREA 2 — CLIENTE -->
+    <section class="card cliente">
+      <div class="head">
+        <div>
+          <div class="idx">AREA 02</div>
+          <h3>Il mio Account</h3>
+          <p class="sub">Area riservata cliente — “Il mio Stappando”</p>
+        </div>
+        <div class="who">
+          <span class="badge g-user"><span class="dot"></span>User</span>
+          <span class="badge g-horeca"><span class="dot"></span>Horeca</span>
+        </div>
+      </div>
+      <ul class="tree">
+        <li><div class="node l1"><span class="lbl">Panoramica</span><span class="desc">ultimi ordini, saldo buoni, scorciatoie</span></div></li>
+        <li><div class="node l1"><span class="lbl">Ordini</span></div>
+          <ul>
+            <li><div class="node"><span class="lbl">Storico &amp; dettaglio</span></div></li>
+            <li><div class="node"><span class="lbl">Tracking spedizione</span></div></li>
+            <li><div class="node"><span class="lbl">Riordina · Reso · Fattura/ricevuta</span></div></li>
+          </ul>
+        </li>
+        <li><div class="node l1"><span class="lbl">Pagamenti</span><span class="desc">metodi salvati · transazioni · fatture</span></div></li>
+        <li><div class="node l1"><span class="lbl">Indirizzi</span><span class="desc">spedizione · fatturazione</span></div></li>
+        <li><div class="node l1"><span class="lbl">Corriere preferito</span><span class="desc">default BRT / TNT / Poste — modificabile per ordine</span></div></li>
+        <li><div class="node l1"><span class="lbl">Wishlist / Preferiti</span></div></li>
+        <li><div class="node l1"><span class="lbl">Codici sconto &amp; Buoni</span></div></li>
+        <li><div class="node l1"><span class="lbl">Le mie recensioni</span></div></li>
+        <li><div class="node l1"><span class="lbl">Comunicazioni</span><span class="desc">preferenze newsletter/consensi</span></div></li>
+        <li><div class="node l1"><span class="lbl">Profilo &amp; Sicurezza</span><span class="desc">dati · password · 2FA</span></div></li>
+        <li><div class="node l1 u-horeca"><span class="lbl">Area Horeca</span> <span class="lock">SOLO HORECA</span></div>
+          <ul>
+            <li><div class="node"><span class="lbl">Dati azienda / P.IVA / documenti</span></div></li>
+            <li><div class="node"><span class="lbl">Listino B2B &amp; prezzi riservati</span></div></li>
+            <li><div class="node"><span class="lbl">Ordini ricorrenti / riordino rapido</span></div></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- AREA 3 & 4 -->
+  <div class="grid two" style="margin-top:20px">
+    <!-- VENDOR -->
+    <section class="card vendor">
+      <div class="head">
+        <div>
+          <div class="idx">AREA 03</div>
+          <h3>Dashboard Vendor</h3>
+          <p class="sub">Gestione cantina / negozio</p>
+        </div>
+        <div class="who">
+          <span class="badge g-vmgr"><span class="dot"></span>Manager</span>
+          <span class="badge g-vown"><span class="dot"></span>Owner</span>
+        </div>
+      </div>
+      <ul class="tree">
+        <li><div class="node l1"><span class="lbl">Panoramica</span><span class="desc">KPI: vendite, ordini, incasso, stock basso</span></div></li>
+        <li><div class="node l1"><span class="lbl">Prodotti</span></div>
+          <ul>
+            <li><div class="node"><span class="lbl">Elenco · Nuovo · Modifica</span></div></li>
+            <li><div class="node"><span class="lbl">Giacenze / stock</span></div></li>
+            <li><div class="node"><span class="lbl">Prezzi &amp; prezzi horeca</span></div></li>
+            <li><div class="node"><span class="lbl">Media · Import/Export CSV</span></div></li>
+          </ul>
+        </li>
+        <li><div class="node l1"><span class="lbl">Ordini ricevuti</span><span class="desc">stati, evasione, packing</span></div></li>
+        <li><div class="node l1"><span class="lbl">Spedizioni</span><span class="desc">preparazione ordine, corriere indicato dal cliente (offline)</span></div></li>
+        <li><div class="node l1"><span class="lbl">Pagamenti &amp; Payout</span><span class="desc">saldo, commissioni, bonifici</span></div></li>
+        <li><div class="node l1"><span class="lbl">Promozioni &amp; codici sconto</span><span class="desc">del vendor</span></div></li>
+        <li><div class="node l1"><span class="lbl">Recensioni</span><span class="desc">risposte</span></div></li>
+        <li><div class="node l1"><span class="lbl">Profilo cantina</span><span class="desc">bio, logo, banner</span></div></li>
+        <li><div class="node l1"><span class="lbl">Report &amp; statistiche</span></div></li>
+        <li><div class="node l1 u-vown"><span class="lbl">Gestione team</span> <span class="lock">SOLO OWNER</span><span class="desc">inviti, ruoli manager, permessi</span></div></li>
+        <li><div class="node l1 u-vown"><span class="lbl">Impostazioni &amp; dati fiscali</span> <span class="lock">SOLO OWNER</span><span class="desc">contratto, IBAN</span></div></li>
+      </ul>
+    </section>
+
+    <!-- ADMIN -->
+    <section class="card admin">
+      <div class="head">
+        <div>
+          <div class="idx">AREA 04</div>
+          <h3>Dashboard Admin</h3>
+          <p class="sub">Gestione piattaforma</p>
+        </div>
+        <div class="who">
+          <span class="badge g-admin"><span class="dot"></span>Admin</span>
+          <span class="badge g-madmin"><span class="dot"></span>Manager</span>
+        </div>
+      </div>
+      <ul class="tree">
+        <li><div class="node l1"><span class="lbl">Panoramica globale</span><span class="desc">GMV, ordini, utenti, vendor, alert</span></div></li>
+        <li><div class="node l1"><span class="lbl">Catalogo</span></div>
+          <ul>
+            <li><div class="node"><span class="lbl">Prodotti (tutti)</span></div></li>
+            <li><div class="node"><span class="lbl">Categorie · Uvaggi · Regioni</span></div></li>
+            <li><div class="node"><span class="lbl">Tag &amp; collezioni</span></div></li>
+            <li><div class="node"><span class="lbl">Attributi</span><span class="desc">annata, formato, gradazione</span></div></li>
+          </ul>
+        </li>
+        <li><div class="node l1"><span class="lbl">Vendor / Cantine</span><span class="desc">onboarding, commissioni, payout</span></div></li>
+        <li><div class="node l1"><span class="lbl">Utenti</span><span class="desc">clienti, horeca (prezzi riservati), ruoli</span></div></li>
+        <li><div class="node l1"><span class="lbl">Ordini</span><span class="desc">tutti, rimborsi</span></div></li>
+        <li><div class="node l1"><span class="lbl">Pagamenti</span><span class="desc">transazioni, riconciliazione, fatturazione</span></div></li>
+        <li><div class="node l1"><span class="lbl">Promozioni &amp; codici sconto</span><span class="desc">globali</span></div></li>
+        <li><div class="node l1"><span class="lbl">Spedizioni &amp; Corrieri</span><span class="desc">corrieri selezionabili BRT/TNT/Poste, listini spedizione (no API)</span></div></li>
+        <li><div class="node l1"><span class="lbl">Contenuti (CMS)</span><span class="desc">home, banner, blog, pagine, menu</span></div></li>
+        <li><div class="node l1"><span class="lbl">Marketing</span><span class="desc">integrazione Mailchimp, popup, campagne</span></div></li>
+        <li><div class="node l1"><span class="lbl">Recensioni</span><span class="desc">moderazione</span></div></li>
+        <li><div class="node l1"><span class="lbl">Report &amp; Analytics</span></div></li>
+        <li><div class="node l1 u-admin"><span class="lbl">Impostazioni sistema</span> <span class="lock">SOLO ADMIN</span></div>
+          <ul>
+            <li><div class="node"><span class="lbl">Ruoli &amp; permessi (RBAC)</span></div></li>
+            <li><div class="node"><span class="lbl">Integrazioni / API</span><span class="desc">pagamenti, Mailchimp</span></div></li>
+            <li><div class="node"><span class="lbl">Log &amp; audit · Feature flag</span></div></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- DECISIONS + OPEN -->
+  <section class="questions">
+    <h2>Decisioni prese</h2>
+    <p class="sub">Recepite nella v0.2 di questa mappa.</p>
+    <div class="qlist">
+      <div class="q q-ok"><p><b>Gerarchia admin.</b> Admin = super-admin/owner; Manager Admin = operatore con permessi ridotti. Config sistema &amp; RBAC solo Admin.</p></div>
+      <div class="q q-ok"><p><b>Modello vendor.</b> Marketplace multi-vendor: cantine terze vendono in autonomia, con payout e commissioni.</p></div>
+      <div class="q q-ok"><p><b>Horeca.</b> Solo prezzi/listino riservati, registrazione automatica — nessuna approvazione manuale.</p></div>
+      <div class="q q-ok"><p><b>Corrieri.</b> Scelta indicativa in fase d'ordine (BRT/TNT/Poste), evasione offline — nessuna integrazione API.</p></div>
+    </div>
+    <h2 style="margin-top:22px">Ancora da decidere</h2>
+    <div class="qlist">
+      <div class="q"><p><b>Checkout ospite.</b> Si può comprare senza registrarsi, o login obbligatorio? (incide su age gate e fatturazione)</p></div>
+      <div class="q"><p><b>Blog.</b> CMS interno a Next.js (headless) o piattaforma esterna già esistente da collegare?</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Alberatura shop.stappando.it — v0.1 bozza di lavoro</span>
+    <span>Prossimo step → wireframe/mockup delle pagine chiave</span>
+  </footer>
+</div>

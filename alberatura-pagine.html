@@ -1,0 +1,242 @@
+<title>Alberatura Pagine · shop.stappando.it</title>
+<style>
+  :root{
+    --bg:#faf7f3; --panel:#ffffff; --panel-2:#f4efe8;
+    --ink:#2a2320; --ink-soft:#6b6058; --hair:#e7ded3; --hair-strong:#d8ccbd;
+    --wine:#7e1d32; --brass:#a8763e; --add:#2e7d6b; --warn:#b5701f;
+    --shadow:0 1px 2px rgba(42,35,32,.05), 0 8px 28px -18px rgba(42,35,32,.35);
+    --maxw:1080px;
+    --f-ui:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#17130f; --panel:#211b16; --panel-2:#1a1511;
+      --ink:#efe6da; --ink-soft:#a89a8b; --hair:#332a22; --hair-strong:#403428;
+      --wine:#e07a8c; --brass:#d8a765; --add:#5fb9a3; --warn:#d8a765;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 34px -20px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#17130f; --panel:#211b16; --panel-2:#1a1511;
+    --ink:#efe6da; --ink-soft:#a89a8b; --hair:#332a22; --hair-strong:#403428;
+    --wine:#e07a8c; --brass:#d8a765; --add:#5fb9a3; --warn:#d8a765;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 34px -20px rgba(0,0,0,.7);
+  }
+  :root[data-theme="light"]{
+    --bg:#faf7f3; --panel:#ffffff; --panel-2:#f4efe8;
+    --ink:#2a2320; --ink-soft:#6b6058; --hair:#e7ded3; --hair-strong:#d8ccbd;
+    --wine:#7e1d32; --brass:#a8763e; --add:#2e7d6b; --warn:#b5701f;
+    --shadow:0 1px 2px rgba(42,35,32,.05), 0 8px 28px -18px rgba(42,35,32,.35);
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--f-ui);line-height:1.5;
+    -webkit-font-smoothing:antialiased;letter-spacing:.005em}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:clamp(20px,4vw,52px) clamp(16px,4vw,32px)}
+
+  header.masthead{border-bottom:1px solid var(--hair);padding-bottom:24px;margin-bottom:28px}
+  .kicker{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--brass);font-weight:600;margin-bottom:14px}
+  .kicker::before{content:"";width:22px;height:1px;background:var(--brass)}
+  h1{font-size:clamp(28px,5vw,48px);line-height:1.04;margin:0 0 12px;font-weight:800;
+    letter-spacing:-.02em;text-wrap:balance}
+  h1 .dom{color:var(--wine)}
+  .lede{max-width:62ch;color:var(--ink-soft);font-size:clamp(15px,1.6vw,17px);margin:0}
+  .keylegend{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+  .k{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;
+    padding:5px 11px;border-radius:999px;border:1px solid var(--hair)}
+  .k .sq{width:10px;height:10px;border-radius:3px;flex:none}
+  .k.core{color:var(--ink)} .k.core .sq{background:var(--wine)}
+  .k.add{color:var(--add);border-color:color-mix(in srgb,var(--add) 34%,transparent)} .k.add .sq{background:var(--add)}
+  .k.ext{color:var(--brass);border-color:color-mix(in srgb,var(--brass) 34%,transparent)} .k.ext .sq{background:var(--brass)}
+
+  /* funnel */
+  .funnel{margin-bottom:34px}
+  .sec-eyebrow{display:flex;align-items:baseline;gap:12px;margin:0 0 6px}
+  .sec-eyebrow .num{font-size:12px;font-weight:700;color:var(--wine);letter-spacing:.1em}
+  .sec-eyebrow h2{font-size:19px;margin:0;font-weight:800;letter-spacing:-.01em}
+  .sec-note{color:var(--ink-soft);font-size:13px;margin:0 0 16px}
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px}
+  .step{flex:1 1 150px;min-width:140px;background:var(--panel);border:1px solid var(--hair);
+    border-radius:13px;padding:14px 15px;box-shadow:var(--shadow);position:relative}
+  .step.hot{border-color:color-mix(in srgb,var(--wine) 40%,transparent);
+    background:color-mix(in srgb,var(--wine) 7%,var(--panel))}
+  .step .s-k{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brass)}
+  .step.hot .s-k{color:var(--wine)}
+  .step h3{font-size:16px;margin:2px 0 4px;font-weight:800}
+  .step p{margin:0;font-size:12px;color:var(--ink-soft)}
+  .step .badge-heart{position:absolute;top:11px;right:12px;font-size:13px;color:var(--wine)}
+  .flow .arrow{align-self:center;color:var(--hair-strong);font-size:18px;font-weight:700;flex:none}
+  .subflow{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .chip{font-size:12px;font-weight:600;padding:6px 11px;border-radius:8px;background:var(--panel-2);
+    border:1px solid var(--hair)}
+  .chip.add{color:var(--add);background:color-mix(in srgb,var(--add) 10%,var(--panel));
+    border-color:color-mix(in srgb,var(--add) 28%,transparent)}
+  .chip.add::before{content:"＋ ";font-weight:800}
+
+  /* columns */
+  .cols{display:grid;grid-template-columns:1fr;gap:20px}
+  @media(min-width:780px){.cols{grid-template-columns:1fr 1fr}}
+  .card{background:var(--panel);border:1px solid var(--hair);border-radius:16px;
+    padding:20px 22px 22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent,var(--brass))}
+  .card.sec{--accent:var(--brass)} .card.legal{--accent:var(--wine)}
+  .card .idx{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.08em;margin-bottom:2px}
+  .card h3{font-size:19px;margin:0 0 3px;font-weight:800;letter-spacing:-.01em}
+  .card .sub{color:var(--ink-soft);font-size:12.5px;margin:0 0 4px}
+
+  ul.list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:3px}
+  ul.list li{display:flex;align-items:baseline;gap:9px;padding:5px 0;border-bottom:1px dashed transparent}
+  ul.list .lbl{font-size:14px;font-weight:600}
+  ul.list .desc{font-size:12px;color:var(--ink-soft);font-weight:400}
+  ul.list li::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--wine);
+    flex:none;position:relative;top:6px}
+  ul.list li.add::before{background:var(--add)}
+  ul.list li.add .lbl{color:var(--add)}
+  ul.list li.add .lbl::after{content:"＋";font-size:10px;font-weight:800;margin-left:5px;vertical-align:2px}
+  .tagext{font-size:10px;font-weight:700;color:var(--brass);border:1px solid color-mix(in srgb,var(--brass) 34%,transparent);
+    background:color-mix(in srgb,var(--brass) 12%,transparent);padding:1px 6px;border-radius:5px}
+
+  /* missing callout */
+  .missing{margin-top:32px;background:color-mix(in srgb,var(--add) 8%,var(--panel-2));
+    border:1px solid color-mix(in srgb,var(--add) 26%,var(--hair));border-radius:16px;padding:22px 24px}
+  .missing h2{font-size:17px;margin:0 0 3px;font-weight:800;color:var(--add)}
+  .missing > p.sub{color:var(--ink-soft);font-size:13px;margin:0 0 16px}
+  .mgrid{display:grid;gap:14px;grid-template-columns:1fr}
+  @media(min-width:720px){.mgrid{grid-template-columns:repeat(3,1fr)}}
+  .mgrid h4{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 8px}
+  .mgrid ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+  .mgrid li{font-size:13px;font-weight:600;display:flex;gap:7px}
+  .mgrid li::before{content:"＋";color:var(--add);font-weight:800}
+  .flag{margin-top:16px;padding-top:14px;border-top:1px dashed color-mix(in srgb,var(--add) 30%,var(--hair));
+    font-size:12.5px;color:var(--ink-soft)}
+  .flag b{color:var(--warn)}
+
+  footer{margin-top:30px;padding-top:16px;border-top:1px solid var(--hair);
+    color:var(--ink-soft);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--wine);outline-offset:2px;border-radius:4px}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">Re-platform · Mappa pagine &amp; contenuti</div>
+    <h1>Alberatura pagine <span class="dom">shop.stappando.it</span></h1>
+    <p class="lede">Struttura per contenuti a partire dal tuo schema: il funnel di vendita come cuore, poi pagine
+      secondarie/istituzionali e legali. In <span style="color:var(--add);font-weight:700">verde</span> ciò che aggiungerei rispetto al tuo elenco.</p>
+    <div class="keylegend">
+      <span class="k core"><span class="sq"></span>Nel tuo elenco</span>
+      <span class="k add"><span class="sq"></span>＋ Da aggiungere</span>
+      <span class="k ext"><span class="sq"></span>↗ Esterno</span>
+    </div>
+  </header>
+
+  <!-- FUNNEL -->
+  <section class="funnel">
+    <div class="sec-eyebrow"><span class="num">CUORE</span><h2>Funnel di vendita</h2></div>
+    <p class="sec-note">Il percorso che porta all'acquisto. Home e PDP sono le pagine che pesano di più sulla conversione.</p>
+    <div class="flow">
+      <div class="step hot"><div class="s-k">Ingresso</div><h3>Home</h3><p>vetrina, tag editoriali, promo, cantine</p></div>
+      <span class="arrow">→</span>
+      <div class="step"><div class="s-k">Scoperta</div><h3>Grid / Listing</h3><p>griglia prodotti + filtri e ordinamento</p></div>
+      <span class="arrow">→</span>
+      <div class="step hot"><div class="s-k">Cuore</div><h3>PDP <span class="badge-heart">♥</span></h3><p>scheda prodotto, la pagina che converte</p></div>
+      <span class="arrow">→</span>
+      <div class="step"><div class="s-k">＋ Chiusura</div><h3>Carrello</h3><p>riepilogo, buoni, upsell</p></div>
+      <span class="arrow">→</span>
+      <div class="step"><div class="s-k">＋ Chiusura</div><h3>Checkout</h3><p>indirizzi, corriere, pagamento</p></div>
+    </div>
+    <div class="subflow">
+      <span class="chip">Categoria / Regione / Uvaggio / Vendor <span style="color:var(--ink-soft);font-weight:400">→ varianti di Grid</span></span>
+      <span class="chip add">Ricerca &amp; risultati</span>
+      <span class="chip add">Age gate 18+</span>
+      <span class="chip add">Login / Registrazione</span>
+      <span class="chip add">Wishlist</span>
+      <span class="chip add">Conferma ordine / Grazie</span>
+    </div>
+  </section>
+
+  <!-- COLUMNS -->
+  <div class="cols">
+    <!-- SECONDARIE -->
+    <section class="card sec">
+      <div class="idx">SECONDARIE · ISTITUZIONALI</div>
+      <h3>Il gruppo &amp; contenuti</h3>
+      <p class="sub">Menu secondario + footer — raccontano il brand e supportano il cliente.</p>
+      <ul class="list">
+        <li><span class="lbl">Il Gruppo</span><span class="desc">chi siamo, storia, valori</span></li>
+        <li><span class="lbl">Racconti <span class="tagext">ex Blog</span></span><span class="desc">articoli, guide, abbinamenti</span></li>
+        <li><span class="lbl">Contatti</span><span class="desc">form, sedi, assistenza</span></li>
+        <li><span class="lbl">Eventi</span><span class="desc">degustazioni, fiere, calendario</span></li>
+        <li><span class="lbl">Vendi con noi</span><span class="desc">diventa vendor / cantina partner</span></li>
+        <li><span class="lbl">Legenda premi &amp; riconoscimenti</span><span class="desc">simboli e medaglie sui prodotti</span></li>
+        <li class="add"><span class="lbl">FAQ / Assistenza</span><span class="desc">domande frequenti, help center</span></li>
+        <li class="add"><span class="lbl">Newsletter</span> <span class="tagext">↗ Mailchimp</span></li>
+        <li class="add"><span class="lbl">Lavora con noi</span><span class="desc">careers, diverso da “vendi con noi”</span></li>
+        <li class="add"><span class="lbl">Idee regalo / Gift card</span><span class="desc">cofanetti, buono regalo</span></li>
+        <li class="add"><span class="lbl">Wine Club / Abbonamenti</span><span class="desc">box ricorrente / abbonamento — confermato</span></li>
+      </ul>
+    </section>
+
+    <!-- LEGALI -->
+    <section class="card legal">
+      <div class="idx">SERVIZIO · LEGALI</div>
+      <h3>Informative &amp; policy</h3>
+      <p class="sub">Pagine di servizio e obbligatorie — tipicamente nel footer.</p>
+      <ul class="list">
+        <li><span class="lbl">Spedizioni e Pagamenti</span><span class="desc">costi · zone · tempi + metodi e sicurezza + metodi di pagamento accettati</span></li>
+        <li><span class="lbl">Resi, rimborsi e recesso</span><span class="desc">procedura, tempi + diritto di recesso</span></li>
+        <li><span class="lbl">Termini, condizioni e note legali</span><span class="desc">condizioni di vendita + P.IVA, REA, dati societari</span></li>
+        <li><span class="lbl">Privacy</span><span class="desc">informativa GDPR</span></li>
+        <li><span class="lbl">Cookie &amp; preferenze</span><span class="desc">cookie policy + gestione consensi</span></li>
+        <li><span class="lbl">Vendita alcolici / Bevi responsabile</span><span class="desc">policy età, obbligatoria per alcolici</span></li>
+        <li class="add"><span class="lbl">Accessibilità</span><span class="desc">opzionale ma consigliata</span></li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- COSA MANCA -->
+  <section class="missing">
+    <h2>Che manca? — la mia risposta</h2>
+    <p class="sub">Le voci che aggiungerei, raggruppate per zona. Sono già segnate in verde qui sopra.</p>
+    <div class="mgrid">
+      <div>
+        <h4>Nel funnel</h4>
+        <ul>
+          <li>Carrello</li>
+          <li>Checkout + conferma ordine</li>
+          <li>Ricerca &amp; risultati</li>
+          <li>Age gate 18+</li>
+          <li>Login / Registrazione</li>
+          <li>Wishlist</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Secondarie</h4>
+        <ul>
+          <li>FAQ / Assistenza</li>
+          <li>Newsletter → Mailchimp</li>
+          <li>Lavora con noi</li>
+          <li>Idee regalo / Gift card</li>
+          <li>Wine Club / Abbonamenti</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legali</h4>
+        <ul>
+          <li>Bevi responsabile / alcolici</li>
+          <li>Accessibilità (opz.)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="flag">
+      <p style="margin:0 0 6px"><b>✓ Accorpamenti applicati:</b> <b>Blog → Racconti</b> · <b>Spedizioni e Pagamenti</b> (con metodi di pagamento accettati) · <b>Resi, rimborsi e recesso</b> · <b>Termini, condizioni e note legali</b> · Cookie &amp; preferenze uniti.</p>
+      <p style="margin:0"><b>Risultato:</b> le pagine legali/servizio passano da 12 a 6 voci, più snelle da gestire nel footer.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Alberatura pagine &amp; contenuti — v0.5</span>
+    <span>Complementare alla mappa per ruoli (aree 01–04)</span>
+  </footer>
+</div>
