@@ -1,0 +1,241 @@
+<title>Capacità utente · shop.stappando.it</title>
+<style>
+  :root{
+    --teal:#005667;--teal-d:#003d4d;--gold:#b8973f;--gold-s:#d9c39a;--wine:#7a1f2b;
+    --bg:#f6f1e6;--panel:#fffdf8;--panel2:#efe7d6;--ink:#171512;--ink2:#5f594f;--line:#e6ddcb;--line2:#d6cbb4;
+    --ok:#2e7d6b;--no:#b9b0a0;--part:#b5701f;
+    --r-guest:#8a8177;--r-user:#3a6ea5;--r-horeca:#2e7d6b;--r-vmgr:#b0803a;--r-vown:#9a5327;--r-admin:#8f1f38;--r-madmin:#6b3b74;
+    --f:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;--maxw:1120px;
+    --sh:0 1px 2px rgba(20,15,5,.05),0 10px 30px -20px rgba(20,15,5,.4);
+  }
+  @media (prefers-color-scheme:dark){:root{--bg:#14110b;--panel:#1c1810;--panel2:#181510;--ink:#efe7d6;--ink2:#a99f8c;--line:#2c261b;--line2:#3a3223;
+    --teal:#3fa0b0;--gold:#cbab63;--r-user:#7aa8d8;--r-horeca:#5fb9a3;--r-vmgr:#d8ab63;--r-vown:#d68a55;--r-admin:#e8829a;--r-madmin:#b787c0;--r-guest:#b0a595;}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:clamp(22px,4vw,52px) clamp(16px,4vw,32px)}
+  h1,h2,h3{margin:0;letter-spacing:-.02em}
+  .kick{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px}
+  .kick::before{content:"";width:22px;height:1px;background:var(--gold)}
+  h1{font-size:clamp(30px,5vw,50px);font-weight:800;line-height:1.03;margin-bottom:12px}
+  h1 .d{color:var(--teal)}
+  .lede{max-width:62ch;color:var(--ink2);font-size:clamp(15px,1.6vw,17px);margin:0}
+  header.top{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:30px}
+
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .badge{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;color:var(--h);background:color-mix(in srgb,var(--h) 12%,transparent);border:1px solid color-mix(in srgb,var(--h) 32%,transparent)}
+  .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--h)}
+  .g-guest{--h:var(--r-guest)}.g-user{--h:var(--r-user)}.g-horeca{--h:var(--r-horeca)}.g-vmgr{--h:var(--r-vmgr)}.g-vown{--h:var(--r-vown)}.g-admin{--h:var(--r-admin)}.g-madmin{--h:var(--r-madmin)}
+
+  .sec-eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:38px 0 6px}
+  .sec-title{font-size:22px;font-weight:800;margin-bottom:20px}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:760px){.cards{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;box-shadow:var(--sh);position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--h,var(--teal))}
+  .card .chead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+  .card h3{font-size:19px;font-weight:800}
+  .card .who{font-size:12px;color:var(--ink2)}
+  .card .plus{font-size:11.5px;color:var(--ink2);font-style:italic;margin:2px 0 12px}
+  .card ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+  .card li{display:flex;gap:9px;font-size:13.5px;line-height:1.4}
+  .card li::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--h,var(--teal));flex:none;position:relative;top:6px}
+  .card li b{font-weight:600}
+  .card.c-guest{--h:var(--r-guest)}.card.c-user{--h:var(--r-user)}.card.c-horeca{--h:var(--r-horeca)}
+  .card.c-vmgr{--h:var(--r-vmgr)}.card.c-vown{--h:var(--r-vown)}.card.c-admin{--h:var(--r-admin)}.card.c-madmin{--h:var(--r-madmin)}
+  .no{color:var(--ink2)}.no::before{background:var(--no)!important;opacity:.6}
+
+  /* matrix */
+  .mtxwrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh);background:var(--panel)}
+  table.mtx{border-collapse:collapse;width:100%;min-width:760px;font-size:13px}
+  table.mtx th,table.mtx td{padding:11px 10px;text-align:center;border-bottom:1px solid var(--line)}
+  table.mtx thead th{position:sticky;top:0;background:var(--panel2);font-size:11px;letter-spacing:.03em;font-weight:700;color:var(--ink)}
+  table.mtx tbody th{text-align:left;font-weight:600;white-space:nowrap;color:var(--ink);background:var(--panel)}
+  table.mtx td .y{color:var(--ok);font-weight:800}
+  table.mtx td .n{color:var(--no)}
+  table.mtx td .p{color:var(--part);font-weight:800}
+  table.mtx tbody tr:hover td,table.mtx tbody tr:hover th{background:color-mix(in srgb,var(--teal) 5%,var(--panel))}
+  .mtx-legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--ink2);margin-top:12px}
+  .mtx-legend b{color:var(--ink)}
+
+  .qbox{margin-top:36px;background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+  .qbox h3{font-size:16px;font-weight:800;margin-bottom:4px}
+  .qbox p.s{font-size:13px;color:var(--ink2);margin:0 0 14px}
+  .qgrid{display:grid;gap:11px;grid-template-columns:1fr 1fr}
+  @media(max-width:640px){.qgrid{grid-template-columns:1fr}}
+  .q{display:flex;gap:11px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:13px}
+  .q::before{content:"?";font-weight:800;color:var(--teal);background:color-mix(in srgb,var(--teal) 12%,transparent);border-radius:6px;padding:2px 8px;height:fit-content}
+  footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);color:var(--ink2);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="kick">Information Architecture · Capacità utente</div>
+    <h1>Cosa può fare ogni utente su <span class="d">shop.stappando.it</span></h1>
+    <p class="lede">Le azioni che ciascun livello può compiere. Modello a cascata: ogni ruolo eredita ciò che possono fare quelli sotto, più il proprio.</p>
+    <div class="legend">
+      <span class="badge g-guest"><span class="dot"></span>Guest</span>
+      <span class="badge g-user"><span class="dot"></span>User · B2C</span>
+      <span class="badge g-horeca"><span class="dot"></span>Horeca · B2B</span>
+      <span class="badge g-vmgr"><span class="dot"></span>Vendor Manager</span>
+      <span class="badge g-vown"><span class="dot"></span>Vendor Owner</span>
+      <span class="badge g-admin"><span class="dot"></span>Admin</span>
+      <span class="badge g-madmin"><span class="dot"></span>Manager Admin</span>
+    </div>
+  </header>
+
+  <!-- CLIENTI -->
+  <div class="sec-eyebrow">Lato cliente</div>
+  <div class="sec-title">Chi compra</div>
+  <div class="cards">
+    <div class="card c-guest">
+      <div class="chead"><h3>Guest</h3><span class="who">visitatore non registrato</span></div>
+      <ul>
+        <li>Sfogliare il catalogo, cercare per <b>nome, categoria, vendor, uvaggio, regione</b></li>
+        <li>Applicare filtri e ordinamenti, vedere le <b>classifiche</b></li>
+        <li>Aprire la <b>scheda prodotto</b>: dettagli, premi, recensioni</li>
+        <li>Aggiungere al <b>carrello</b> (temporaneo)</li>
+        <li>Leggere i <b>Racconti</b> (blog) e le pagine informative</li>
+        <li>Iscriversi alla <b>newsletter</b> (→ Mailchimp)</li>
+        <li>Superare l'<b>age gate 18+</b> e registrarsi / accedere</li>
+        <li class="no">Salvare wishlist, vedere storico o prezzi riservati</li>
+      </ul>
+    </div>
+    <div class="card c-user">
+      <div class="chead"><h3>User</h3><span class="who">cliente registrato B2C</span></div>
+      <p class="plus">tutto ciò che fa il Guest, più:</p>
+      <ul>
+        <li>Completare l'<b>ordine e il pagamento</b> (carte, PayPal, Klarna, bonifico)</li>
+        <li>Scegliere il <b>corriere</b> per ogni ordine · BRT · TNT · Poste</li>
+        <li>Impostare un <b>corriere preferito</b> di default</li>
+        <li>Vedere <b>storico ordini</b>, tracking, riordinare, richiedere reso</li>
+        <li>Scaricare <b>fatture/ricevute</b>, gestire metodi di pagamento</li>
+        <li>Gestire <b>indirizzi</b>, profilo, password e 2FA</li>
+        <li>Salvare <b>wishlist</b> e preferiti</li>
+        <li>Usare <b>codici sconto</b>, buoni e crediti</li>
+        <li>Scrivere <b>recensioni</b> (con acquisto verificato)</li>
+        <li>Iscriversi al <b>Wine Club</b> e gestirlo (salta/disdici)</li>
+      </ul>
+    </div>
+    <div class="card c-horeca">
+      <div class="chead"><h3>Horeca</h3><span class="who">bar · ristoranti · hotel (B2B)</span></div>
+      <p class="plus">tutto ciò che fa lo User, più:</p>
+      <ul>
+        <li>Vedere <b>listino e prezzi riservati</b> (dopo login)</li>
+        <li>Inserire <b>dati azienda / P.IVA</b> e documenti</li>
+        <li><b>Ordini ricorrenti</b> e riordino rapido</li>
+        <li>Fatturazione dedicata all'attività</li>
+        <li class="no">Registrazione automatica — nessuna approvazione manuale</li>
+      </ul>
+    </div>
+    <div class="card c-admin" style="--h:var(--gold)">
+      <div class="chead"><h3>Trasversale</h3><span class="who">tutti i clienti</span></div>
+      <ul>
+        <li>Contattare l'<b>assistenza</b> e leggere le FAQ</li>
+        <li>Gestire i <b>consensi</b> (cookie, comunicazioni)</li>
+        <li>Consultare <b>spedizioni, resi, pagamenti</b></li>
+        <li>Condividere prodotti e <b>lista desideri</b></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- VENDOR -->
+  <div class="sec-eyebrow">Lato marketplace</div>
+  <div class="sec-title">Chi vende</div>
+  <div class="cards">
+    <div class="card c-vmgr">
+      <div class="chead"><h3>Vendor Manager</h3><span class="who">gestore cantina/negozio</span></div>
+      <ul>
+        <li>Vedere <b>dashboard e KPI</b> di vendita</li>
+        <li>Creare e modificare <b>prodotti</b> (schede, media)</li>
+        <li>Gestire <b>giacenze e prezzi</b> (anche prezzi horeca)</li>
+        <li>Gestire gli <b>ordini ricevuti</b> ed evaderli</li>
+        <li>Preparare le <b>spedizioni</b> (corriere indicato dal cliente)</li>
+        <li>Rispondere alle <b>recensioni</b>, vedere report</li>
+        <li class="no">Non gestisce payout, team o dati fiscali</li>
+      </ul>
+    </div>
+    <div class="card c-vown">
+      <div class="chead"><h3>Vendor Owner</h3><span class="who">titolare del vendor</span></div>
+      <p class="plus">tutto ciò che fa il Manager, più:</p>
+      <ul>
+        <li>Vedere <b>payout, commissioni</b> e storico bonifici</li>
+        <li>Gestire <b>dati fiscali / IBAN</b> e contratto</li>
+        <li><b>Invitare e gestire il team</b> (ruoli manager)</li>
+        <li>Creare <b>promozioni e codici sconto</b> del vendor</li>
+        <li>Impostazioni del profilo cantina</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ADMIN -->
+  <div class="sec-eyebrow">Lato piattaforma</div>
+  <div class="sec-title">Chi gestisce</div>
+  <div class="cards">
+    <div class="card c-madmin">
+      <div class="chead"><h3>Manager Admin</h3><span class="who">operatore</span></div>
+      <ul>
+        <li>Gestire <b>ordini</b>, rimborsi e assistenza clienti</li>
+        <li>Gestire <b>catalogo</b> e contenuti (home, Racconti, pagine)</li>
+        <li>Approvare/gestire <b>vendor</b> e utenti</li>
+        <li>Moderare <b>recensioni</b>, gestire promozioni</li>
+        <li>Consultare <b>report</b> e analytics</li>
+        <li class="no">Nessun accesso a impostazioni di sistema o ruoli</li>
+      </ul>
+    </div>
+    <div class="card c-admin">
+      <div class="chead"><h3>Admin</h3><span class="who">super / owner</span></div>
+      <p class="plus">tutto ciò che fa il Manager Admin, più:</p>
+      <ul>
+        <li><b>Impostazioni di sistema</b> e configurazione generale</li>
+        <li><b>Ruoli e permessi</b> (RBAC)</li>
+        <li><b>Integrazioni / API</b> (pagamenti, Mailchimp, corrieri)</li>
+        <li>Commissioni e contratti vendor, payout globali</li>
+        <li>Log, audit e feature flag</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- MATRICE -->
+  <div class="sec-eyebrow">Colpo d'occhio</div>
+  <div class="sec-title">Matrice permessi</div>
+  <div class="mtxwrap">
+    <table class="mtx">
+      <thead><tr><th></th><th>Guest</th><th>User</th><th>Horeca</th><th>V. Manager</th><th>V. Owner</th><th>Admin</th><th>M. Admin</th></tr></thead>
+      <tbody>
+        <tr><th>Sfogliare &amp; cercare</th><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
+        <tr><th>Vedere prezzi base</th><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
+        <tr><th>Prezzi riservati (B2B)</th><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="y">✓</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
+        <tr><th>Acquistare / checkout</th><td><span class="p">○</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td></tr>
+        <tr><th>Scegliere il corriere</th><td><span class="n">–</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td></tr>
+        <tr><th>Wishlist &amp; preferiti</th><td><span class="n">–</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td></tr>
+        <tr><th>Storico ordini &amp; tracking</th><td><span class="n">–</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
+        <tr><th>Recensire (verificato)</th><td><span class="n">–</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td></tr>
+        <tr><th>Wine Club</th><td><span class="n">–</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td></tr>
+        <tr><th>Vendere prodotti</th><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
+        <tr><th>Gestire ordini ricevuti</th><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
+        <tr><th>Payout &amp; dati fiscali</th><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="n">–</span></td></tr>
+        <tr><th>Gestire team vendor</th><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="n">–</span></td></tr>
+        <tr><th>Gestire catalogo/utenti</th><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
+        <tr><th>Impostazioni &amp; RBAC</th><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="n">–</span></td><td><span class="y">✓</span></td><td><span class="n">–</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="mtx-legend"><span><b class="" style="color:var(--ok)">✓</b> può farlo</span><span><b style="color:var(--part)">○</b> da decidere</span><span><b style="color:var(--no)">–</b> non previsto</span></div>
+
+  <!-- DOMANDE -->
+  <div class="qbox">
+    <h3>Da decidere insieme</h3>
+    <p class="s">Punti che cambiano cosa può fare un utente:</p>
+    <div class="qgrid">
+      <div class="q"><span><b>Checkout ospite:</b> un Guest può comprare senza registrarsi, o login obbligatorio?</span></div>
+      <div class="q"><span><b>Recensioni:</b> solo con acquisto verificato, o anche recensioni libere moderate?</span></div>
+      <div class="q"><span><b>Vendor come clienti:</b> un account vendor può anche acquistare, o è solo lato vendita?</span></div>
+      <div class="q"><span><b>Resi:</b> l'utente apre il reso da solo online, o richiede via assistenza?</span></div>
+      <div class="q"><span><b>Wishlist Guest:</b> salvata sul dispositivo per il non registrato, o solo dopo login?</span></div>
+      <div class="q"><span><b>Horeca fido:</b> pagamento differito/credito per i B2B, sì o no?</span></div>
+    </div>
+  </div>
+
+  <footer><span>Capacità utente — v0.1 bozza</span><span>Complementare all'alberatura per ruoli e pagine</span></footer>
+</div>
